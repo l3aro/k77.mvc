@@ -11,23 +11,15 @@
 |
 */
 
-Route::get('', 'HomeController@index');
+Route::group(['namespace' => 'Client'], function() {
+    Route::get('', 'HomeController@index');
+    Route::get('gioi-thieu', 'HomeController@about');
+    Route::get('lien-he', 'HomeController@contact');
 
-Route::get('user/2/edit', 'HomeController@index')
-    ->prefix('client')
-    ->name('user.edit');
-//     /admin/user/2/edit
-
-Route::get('user/{user_id}', 'HomeController@params');
-
-
-Route::get('user', 'Admin\Auth\HomeController@user')->prefix('admin');
-
-Route::get('product', 'ProductController');
-
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'Admin'
-], function() {
-    
+    Route::get('gio-hang', 'CartController@cart');
+    Route::get('gio-hang/thanh-toan', 'CartController@checkout');
+    Route::get('gio-hang/hoan-thanh', 'CartController@complete');
+    Route::get('san-pham/{id}', 'ProductController@detail');
+    Route::get('san-pham', 'ProductController@shop');
 });
+

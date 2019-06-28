@@ -7,8 +7,18 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function user()
+    public function index()
     {
-        return "HomeController Client";
+        return view('client.index');
+    }
+    
+    public function contact()
+    {
+        return view('client.contact');
+    }
+
+    public function about()
+    {
+        return view('client.about');
     }
 }
