@@ -23,3 +23,5 @@ Route::group(['namespace' => 'Client'], function() {
     Route::get('san-pham', 'ProductController@shop');
 });
 
+Route::get('form', 'FormController@get'); // locahost:8000/form
+Route::post('form', 'FormController@post');// locahost:8000/form
