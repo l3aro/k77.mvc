@@ -13,8 +13,6 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::whereBetween('price', [300000, 399000])->get();
-        $product = Product::find(11);
-        print_r($product);die;
 
         return view('client.index', ['products' => $products]);
     }
