@@ -137,7 +137,16 @@
 												<td>
 													<a class="btn btn-danger" href="#" role="button">hết hàng</a>
 												</td>
-												<td>Áo Khoác Nam</td>
+												@php
+													$name = '';
+													$listCategory = $product->categories()->get();
+													foreach ($listCategory as $category) {
+														$name .= $category->name.', ';
+														// print_r($category->name);
+													}
+													// $name = substr($name, -1, 2);
+												@endphp
+												<td>{{ $name ?? '' }}</td>
 												<td>
 													<a href="#" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 													<a href="#" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
