@@ -73,6 +73,11 @@
         <!--/.row-->
         <div class="row">
             <div class="col-xs-6 col-md-12 col-lg-12">
+                @if (session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+                @endif
                 <div class="panel panel-primary">
                     <div class="panel-heading">Sửa sản phẩm</div>
                     <form method="POST" action="{{ route('admin.products.update', $product->id) }}">

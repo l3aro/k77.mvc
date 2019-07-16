@@ -28,7 +28,10 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        print_r($product);
+        // session()->flash('success', 'Tạo mới sản phẩm thành công.');
+
+        return redirect()->route('admin.products.edit', $product->id)
+            ->with('success', 'Tạo mới sản phẩm thành công.');
 
     }
 
@@ -44,5 +47,8 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->save();
+
+        return redirect()->route('admin.products.edit', $product->id)
+            ->with('success', 'Sửa sản phẩm thành công.');
     }
 }
