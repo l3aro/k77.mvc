@@ -13,16 +13,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-        Session::put('name', 'Baro');
-        session()->put('name2', 'Nil');
-        session(['name2' => 'Kwon']);
+        print_r('Good Morning');
+        // Session::put('name', 'Baro');
+        // session()->put('name2', 'Nil');
+        // session(['name2' => 'Kwon']);
 
         // session()->flush();
 
 
-        Session::get('name2');
-        session()->get('name2');
+        // Session::get('name2');
+        // session()->get('name2');
         // echo session('name2', 'Baro Kiteeer');
 
         // Session::forget('name2');
@@ -33,7 +33,7 @@ class HomeController extends Controller
 
         // session()->flash('name3', 'Kiteer');
 
-        print_r(session()->all());
+        // print_r(session()->all());
 
 
 
@@ -46,7 +46,7 @@ class HomeController extends Controller
         // die('im in');
         $products = Product::whereBetween('price', [300000, 399000])->get();
 
-        // return view('client.index', ['products' => $products]);
+        return view('client.index', ['products' => $products]);
     }
     
     public function contact()

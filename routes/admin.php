@@ -88,3 +88,8 @@ Route::group(['prefix' => 'orders'], function() {
         'uses' => 'OrderController@detail'
     ]); // /admin/orders/{id}/detail
 });
+
+Route::get('', 'HomeController');
+
+Route::get('login', 'LoginController@showLoginForm');
+Route::post('login', 'LoginController@login');

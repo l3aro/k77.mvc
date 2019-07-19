@@ -7,14 +7,8 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function user()
+    public function __invoke()
     {
-        return "HomeController Admin";
-    }
-
-    public function index()
-    {
-        echo route('admin.home.index');
-        return "HomeController Admin Index";
+        return view('admin.dashboard.index');
     }
 }

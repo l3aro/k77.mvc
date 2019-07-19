@@ -11,8 +11,13 @@
 |
 */
 
-Route::group(['namespace' => 'Client'], function() {
-    Route::get('', 'HomeController@index');
+Route::group([
+    'namespace' => 'Client',
+    'middleware' => 'productId'
+], function() {
+    Route::get('', [
+        'uses' => 'HomeController@index'
+    ]);
     Route::get('gioi-thieu', 'HomeController@about');
     Route::get('lien-he', 'HomeController@contact');
 
