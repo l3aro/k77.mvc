@@ -20,9 +20,15 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only(['email', 'password']);
-        if (auth()->attempt($credentials)) {
+        if (auth()->guard('admin')->attempt($credentials)) {
             return redirect('/admin');
         }
         return back()->withInput();
+    }
+
+    public function logout()
+    {
+        \Auth::guard('admin')->logout();
+        return redirect('/admin/login');
     }
 }
