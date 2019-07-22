@@ -11,22 +11,6 @@
 |
 */
 
-Route::group([
-    'namespace' => 'Client',
-    'middleware' => 'productId'
-], function() {
-    Route::get('', [
-        'uses' => 'HomeController@index'
-    ]);
-    Route::get('gioi-thieu', 'HomeController@about');
-    Route::get('lien-he', 'HomeController@contact');
-
-    Route::get('gio-hang', 'CartController@cart');
-    Route::get('gio-hang/thanh-toan', 'CartController@checkout');
-    Route::get('gio-hang/hoan-thanh', 'CartController@complete');
-    Route::get('san-pham/{id}', 'ProductController@detail');
-    Route::get('san-pham', 'ProductController@shop');
+Route::get('/', function() {
+    return 'Hello';
 });
-
-Route::get('form', 'FormController@get'); // locahost:8000/form
-Route::post('form', 'FormController@post');// locahost:8000/form
