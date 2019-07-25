@@ -18,19 +18,6 @@ Route::get('', [
     'uses' => 'DashboardController@index'
 ]);
 
-Route::get('showLoginForm', [
-    'as' => 'admin.login.showLoginForm',
-    'uses' => 'Auth\LoginController@showLoginForm'
-]);
-Route::post('login', [
-    'as' => 'admin.login.login',
-    'uses' => 'Auth\LoginController@login'
-]);
-Route::post('logout', [
-    'as' => 'admin.login.logout',
-    'uses' => 'Auth\LoginController@logout'
-]);
-
 Route::resource('products', 'ProductController', [
     'as' => 'admin',
     'parameters' => ['products' => 'id']
@@ -51,4 +38,17 @@ Route::get('orders/processed', [
 Route::resource('orders', 'OrderController', [
     'as' => 'admin',
     'parameters' => ['orders' => 'id']
+]);
+
+Route::get('login', [
+    'as' => 'admin.login.showLoginForm',
+    'uses' => 'Auth\LoginController@showLoginForm'
+]);
+Route::post('login', [
+    'as' => 'admin.login.login',
+    'uses' => 'Auth\LoginController@login'
+]);
+Route::post('logout', [
+    'as' => 'admin.login.logout',
+    'uses' => 'Auth\LoginController@logout'
 ]);
