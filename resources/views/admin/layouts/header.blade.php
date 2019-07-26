@@ -12,8 +12,7 @@
                                     <use xlink:href="#stroked-male-user"></use>
                                 </svg>Thông tin</a></li>
                         <li>
-                            <a href="login.html"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                            <a href="login.html" class="logout-btn">
                                 <svg class="glyph stroked cancel">
                                     <use xlink:href="#stroked-cancel"></use>
                                 </svg> Logout
@@ -29,3 +28,14 @@
         </div>
     </div><!-- /.container-fluid -->
 </nav>
+
+@push('js')
+<script>
+$(document).ready(function() {
+    $('.logout-btn').click(function(e) {
+        e.preventDefault();
+        $('#logout-form').submit();
+    });
+});
+</script>
+@endpush

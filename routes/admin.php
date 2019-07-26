@@ -13,32 +13,36 @@
 
 // /admin
 
-Route::get('', [
-    'as' => 'admin.dashboard.index',
-    'uses' => 'DashboardController@index'
-]);
+Route::group(['middleware' => 'auth'], function() {
 
-Route::resource('products', 'ProductController', [
-    'as' => 'admin',
-    'parameters' => ['products' => 'id']
-]);
+    Route::get('', [
+        'as' => 'admin.dashboard.index',
+        'uses' => 'DashboardController@index'
+    ]);
 
-Route::resource('users', 'UserController', [
-    'as' => 'admin',
-    'parameters' => ['users' => 'id']
-]);
-Route::resource('categories', 'CategoryController', [
-    'as' => 'admin',
-    'parameters' => ['categories' => 'id']
-]);
-Route::get('orders/processed', [
-    'as' => 'admin.orders.processed',
-    'uses' => 'OrderController@processed'
-]);
-Route::resource('orders', 'OrderController', [
-    'as' => 'admin',
-    'parameters' => ['orders' => 'id']
-]);
+    Route::resource('products', 'ProductController', [
+        'as' => 'admin',
+        'parameters' => ['products' => 'id']
+    ]);
+
+    Route::resource('users', 'UserController', [
+        'as' => 'admin',
+        'parameters' => ['users' => 'id']
+    ]);
+    Route::resource('categories', 'CategoryController', [
+        'as' => 'admin',
+        'parameters' => ['categories' => 'id']
+    ]);
+    Route::get('orders/processed', [
+        'as' => 'admin.orders.processed',
+        'uses' => 'OrderController@processed'
+    ]);
+    Route::resource('orders', 'OrderController', [
+        'as' => 'admin',
+        'parameters' => ['orders' => 'id']
+    ]);
+});
+
 
 Route::get('login', [
     'as' => 'admin.login.showLoginForm',
