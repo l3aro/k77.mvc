@@ -10,7 +10,7 @@
             >
         </li>
         <li>
-            <a href="category.html"
+            <a href="{{ route('admin.categories.index') }}"
                 ><svg class="glyph stroked clipboard with paper">
                     <use xlink:href="#stroked-clipboard-with-paper" />
                 </svg>
