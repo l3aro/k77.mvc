@@ -27,12 +27,13 @@ class CategoryController extends Controller
      * @param int $parent_id
      * @return mix
      */
-    private function getSubCategories($parent_id)
+    private function getSubCategories($parent_id, $ignore_id=null)
     {
         $categories = Category::where('parent_id', $parent_id)
+            ->where('id', '<>', $ignore_id)
             ->get()
-            ->map(function($query) {
-                $query->sub = $this->getSubCategories($query->id);
+            ->map(function($query) use($ignore_id){
+                $query->sub = $this->getSubCategories($query->id, $ignore_id);
                 return $query;
             });
 
@@ -70,7 +71,8 @@ class CategoryController extends Controller
         
         $category = Category::create($attributes);
         
-        return redirect()->route('admin.categories.edit', $category->id);
+        return redirect()->route('admin.categories.edit', $category->id)
+            ->with('success', 'Tạo mới thành công');
 
     }
 
@@ -93,7 +95,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $categories = $this->getSubCategories(0, $id);
+        return view('admin.categories.edit', compact('categories', 'category'));
     }
 
     /**
@@ -105,7 +109,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'parent_id' => 'required|numeric|min:0',
+            'name' => 'required|unique:categories,id,'.$id
+        ]);
+
+        $category = Category::findOrFail($id);
+
+        $attributes = $request->only([
+            'parent_id', 'name'
+        ]);
+        
+        $category = $category->fill($attributes);
+        $category->save();
+        
+        return redirect()->route('admin.categories.edit', $category->id)
+            ->with('success', 'Cập nhật thành công');
     }
 
     /**
