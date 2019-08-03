@@ -33,7 +33,7 @@
 								</svg>Đã thêm thành công<a href="#" class="pull-right"><span
 										class="glyphicon glyphicon-remove"></span></a>
 							</div>
-							<a href="addproduct.html" class="btn btn-primary">Thêm sản phẩm</a>
+							<a href="{{ route('admin.products.create') }}" class="btn btn-primary">Thêm sản phẩm</a>
 							<table class="table table-bordered" style="margin-top:20px;">
 
 								<thead>
@@ -91,16 +91,8 @@
 										<td>
 											<a class="btn btn-danger" href="#" role="button">hết hàng</a>
 										</td>
-										@php
-										$name = '';
-										$listCategory = $product->categories()->get();
-										foreach ($listCategory as $category) {
-										$name .= $category->name.', ';
-										// print_r($category->name);
-										}
-										// $name = substr($name, -1, 2);
-										@endphp
-										<td>{{ $name ?? '' }}</td>
+										
+										<td>{{ $product->category->name }}</td>
 										<td>
 											<a href="#" class="btn btn-warning"><i class="fa fa-pencil"
 													aria-hidden="true"></i> Sửa</a>
@@ -129,4 +121,4 @@
 
 
 		</div>
-@endproduct
+@endsection

@@ -18,7 +18,7 @@
             >
         </li>
         <li>
-            <a href="listproduct.html"
+            <a href="{{ route('admin.products.index') }}"
                 ><svg class="glyph stroked bag">
                     <use xlink:href="#stroked-bag"></use>
                 </svg>
