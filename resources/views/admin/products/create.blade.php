@@ -18,7 +18,7 @@
             <div class="col-xs-6 col-md-12 col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Thêm sản phẩm</div>
-                    <form action="{{ route('admin.products.store') }}" method="POST">
+                    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{-- <input type="hidden" name="_token" value="kajsf;dkjaoiqjtq;ijqpo4tij"> --}}
                         <div class="panel-body">

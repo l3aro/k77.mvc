@@ -66,7 +66,7 @@ class ProductController extends Controller
             'category_id' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|numeric|min:0',
-            // 'avatar' => 'sometimes|image'
+            'avatar' => 'nullable|sometimes|image'
         ]);
 
         $attributes = $request->only([
@@ -81,10 +81,10 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $destinationDir = asset('media/product');
+            $destinationDir = public_path('media/product');
             $fileName = uniqid('vietpro').'.'.$request->avatar->extension();
             $request->avatar->move($destinationDir, $fileName);
-            $attributes['avatar'] = $fileName;
+            $attributes['avatar'] = '/media/product/'.$fileName;
         }
 
         $product = Product::create($attributes);
