@@ -344,7 +344,7 @@
 							</div>
 							<div class="side">
 								<h2>Khoảng giá</h2>
-								<form method="post" class="colorlib-form-2">
+								<form method="get" class="colorlib-form-2" action="">
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
@@ -352,11 +352,13 @@
 												<div class="form-field">
 													<i class="icon icon-arrow-down3"></i>
 													<select name="start" id="people" class="form-control">
-														<option value="#">100.000 VNĐ</option>
-														<option value="#">200.000 VNĐ</option>
-														<option value="#">300.000 VNĐ</option>
-														<option value="#">500.000 VNĐ</option>
-														<option value="#">1.000.000 VNĐ</option>
+														<option value>-- Select an option --</option>
+														
+														<option {{ $start===100000?'selected':'' }} value="100000">100.000 VNĐ</option>
+														<option {{ $start===200000?'selected':'' }} value="200000">200.000 VNĐ</option>
+														<option {{ $start===300000?'selected':'' }} value="300000">300.000 VNĐ</option>
+														<option {{ $start===500000?'selected':'' }} value="500000">500.000 VNĐ</option>
+														<option {{ $start===1000000?'selected':'' }} value="1000000">1.000.000 VNĐ</option>
 													</select>
 												</div>
 											</div>
@@ -367,11 +369,12 @@
 												<div class="form-field">
 													<i class="icon icon-arrow-down3"></i>
 													<select name="end" id="people" class="form-control">
-														<option value="#">2.000.000 VNĐ</option>
-														<option value="#">4.000.000 VNĐ</option>
-														<option value="#">6.000.000 VNĐ</option>
-														<option value="#">8.000.000 VNĐ</option>
-														<option value="#">10.000.000 VNĐ</option>
+														<option value>-- Select an option --</option>
+														<option {{ $end==2000000?'selected':'' }} value="2000000">2.000.000 VNĐ</option>
+														<option {{ $end==4000000?'selected':'' }} value="4000000">4.000.000 VNĐ</option>
+														<option {{ $end==6000000?'selected':'' }} value="6000000">6.000.000 VNĐ</option>
+														<option {{ $end==8000000?'selected':'' }} value="8000000">8.000.000 VNĐ</option>
+														<option {{ $end==10000000?'selected':'' }} value="10000000">10.000.000 VNĐ</option>
 													</select>
 												</div>
 											</div>
