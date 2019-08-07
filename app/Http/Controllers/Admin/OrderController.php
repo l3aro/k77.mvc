@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.orders.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.orders.edit');
     }
 
     /**
@@ -81,5 +81,10 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function processed()
+    {
+        return view('admin.orders.processed');
     }
 }

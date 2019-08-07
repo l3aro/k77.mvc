@@ -15,8 +15,6 @@ class CalculateProductId
      */
     public function handle($request, Closure $next)
     {
-
-        print_r("Good Evening");
         return $next($request);
     }
 }

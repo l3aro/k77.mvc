@@ -26,7 +26,7 @@
             >
         </li>
         <li>
-            <a href="order.html"
+            <a href="{{ route('admin.orders.index') }}"
                 ><svg class="glyph stroked notepad ">
                     <use xlink:href="#stroked-notepad" />
                 </svg>
