@@ -7,7 +7,7 @@
 				<div class="row">
 					<div class="col-md-9 col-md-push-3">
 
-
+						@dump(Cart::getContent())
 						<div class="row row-pb-lg">
 							@forelse ($products as $product)
 									<div class="col-md-4 text-center">
@@ -16,7 +16,9 @@
 									
 												<div class="cart">
 													<p>
-														<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span>
+														<span class="addtocart">
+															<a href="cart.html" data-id="{{ $product->id }}" class="btn-add-cart"><i class="icon-shopping-cart"></i></a>
+														</span>
 														<span><a href="/san-pham/{{ $product->id }}"><i class="icon-eye"></i></a></span>
 									
 									
@@ -392,3 +394,34 @@
 		</div>
 		<!-- end main -->
 @endsection
+
+@push('js')
+<script>
+$(document).ready(function() {
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+	
+	$('.btn-add-cart').click(function(e) {
+		e.preventDefault();
+		let data = {
+			id: $(this).attr('data-id'),
+			quantity: 1,
+		};
+		$.ajax({
+			url: '/gio-hang/add',
+			method: 'POST',
+			data: data,
+			success: function() {
+
+			},
+			error: function() {
+
+			}
+		});
+	});
+});
+</script>
+@endpush

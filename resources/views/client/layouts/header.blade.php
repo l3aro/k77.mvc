@@ -21,7 +21,7 @@
                             </li>
                             <li><a href="about.html">Giới thiệu</a></li>
                             <li><a href="contact.html">Liên hệ</a></li>
-                            <li><a href="/gio-hang"><i class="icon-shopping-cart"></i> Giỏ hàng [0]</a></li>
+                            <li><a href="/gio-hang"><i class="icon-shopping-cart"></i> Giỏ hàng [{{ \Cart::getTotalQuantity()>9?"9+":\Cart::getTotalQuantity() }}]</a></li>
                         </ul>
                     </div>
                 </div>
