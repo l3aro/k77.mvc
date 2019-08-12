@@ -6,8 +6,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9 col-md-push-3">
-
-						@dump(Cart::getContent())
 						<div class="row row-pb-lg">
 							@forelse ($products as $product)
 									<div class="col-md-4 text-center">
@@ -414,8 +412,8 @@ $(document).ready(function() {
 			url: '/gio-hang/add',
 			method: 'POST',
 			data: data,
-			success: function() {
-
+			success: function(scs) {
+				$('.cart-quantity').text(scs.quantity);
 			},
 			error: function() {
 

@@ -25,6 +25,7 @@ Route::group([
     Route::get('gio-hang/thanh-toan', 'CartController@checkout');
     Route::get('gio-hang/hoan-thanh', 'CartController@complete');
     Route::post('gio-hang/add', 'CartController@add');
+    Route::post('gio-hang/update', 'CartController@update');
 
     Route::get('san-pham/{id}', 'ProductController@detail');
     Route::get('san-pham', 'ProductController@shop');
