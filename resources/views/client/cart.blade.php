@@ -68,7 +68,7 @@
 						</div>
 						<div class="one-eight text-center">
 							<div class="display-tc">
-								<a href="#" class="closed"></a>
+								<a href="#" class="closed btn-remove-product" data-id="{{ $item->id }}"></a>
 							</div>
 						</div>
 					</div>
@@ -149,6 +149,28 @@
 		});
 
 		$(document).ready(function () {
+
+			$('.btn-remove-product').on('click', function(e) {
+				e.preventDefault();
+				let id = $(this).attr('data-id');
+				let _this = $(this);
+
+				if (confirm('Bạn có chắc muốn xóa không?')) {
+					$.ajax({
+						url: '/gio-hang/destroy',
+						method: 'POST',
+						data: {
+							id: id
+						},
+						success: function() {
+							_this.parents('.product-cart').remove();
+						},
+						error: function() {
+
+						}
+					});
+				}
+			});
 
 			$('.input-quantity').change(function() {
 				let data = {

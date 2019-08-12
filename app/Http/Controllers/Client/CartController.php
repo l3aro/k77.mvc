@@ -57,4 +57,11 @@ class CartController extends Controller
             'subTotal' => number_format(Cart::getSubTotal())
         ], 200);
     }
+
+    public function destroy(Request $request)
+    {
+        Cart::remove($request->id);
+
+        return response()->json([], 204);
+    }
 }
