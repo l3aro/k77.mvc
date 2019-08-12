@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cart;
 use App\Models\Product;
+use App\Models\Order;
 
 class CartController extends Controller
 {
@@ -63,5 +64,30 @@ class CartController extends Controller
         Cart::remove($request->id);
 
         return response()->json([], 204);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required'
+        ]);
+
+        $attributes = $request->only([
+            'name', 'email', 'address', 'phone'
+        ]);
+        $order = Order::create($attributes);
+
+        foreach (Cart::getContent() as $item) {
+            $order->orderDetails()->create([
+                'product_id' => $item->id,
+                'price' => $item->price,
+                'quantity' => $item->quantity
+            ]);
+        }
+        
+        return redirect('/gio-hang/hoan-thanh');
     }
 }

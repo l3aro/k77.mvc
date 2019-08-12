@@ -27,6 +27,7 @@ Route::group([
     Route::post('gio-hang/add', 'CartController@add');
     Route::post('gio-hang/update', 'CartController@update');
     Route::post('gio-hang/destroy', 'CartController@destroy');
+    Route::post('gio-hang/store', 'CartController@store');
 
     Route::get('san-pham/{id}', 'ProductController@detail');
     Route::get('san-pham', 'ProductController@shop');

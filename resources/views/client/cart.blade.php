@@ -126,7 +126,7 @@
 								</div>
 								<div class="grand-total">
 									<p><span><strong>Tổng cộng:</strong></span> <span>{{ number_format(Cart::getTotal()) }} đ</span></p>
-									<a href="checkout.html" class="btn btn-primary">Thanh toán <i
+									<a href="/gio-hang/thanh-toan" class="btn btn-primary">Thanh toán <i
 											class="icon-arrow-right-circle"></i></a>
 								</div>
 							</div>
