@@ -78,6 +78,7 @@ class CartController extends Controller
         $attributes = $request->only([
             'name', 'email', 'address', 'phone'
         ]);
+        $attributes['status'] = 'process';
         $order = Order::create($attributes);
 
         foreach (Cart::getContent() as $item) {
@@ -87,6 +88,8 @@ class CartController extends Controller
                 'quantity' => $item->quantity
             ]);
         }
+
+        Cart::clear();
         
         return redirect('/gio-hang/hoan-thanh');
     }
